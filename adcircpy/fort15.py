@@ -2377,7 +2377,7 @@ class Fort15:
     @NHAGE.setter
     def NHAGE(self, NHAGE: int):
         assert NHAGE in [0, 1]
-        self.__NHSTAR = NHAGE
+        self.__NHAGE = NHAGE
 
     @property
     def NHAGV(self) -> int:

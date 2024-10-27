@@ -5,7 +5,7 @@ import math
 from os import PathLike
 import pathlib
 from pathlib import Path
-from typing import Any, Dict, List, Mapping, Union
+from typing import Any, Dict, List, Mapping, Union,Literal
 
 from geopandas import GeoDataFrame
 import numpy as np
@@ -2374,6 +2374,16 @@ class Fort15:
         except AttributeError:
             return self._get_harmonic_analysis_state(self.elevation_surface_output)
 
+    @NHAGE.setter
+    def NHAGE(self, NHAGE: Union[bool,Literal[0,1]]):
+        assert NHAGE in [0, 1, True,False]
+        if isinstance(NHAGE,bool):
+            if NHAGE:
+                self.__NHAGE = 1
+            else:
+                self.__NHAGE = 0
+        else:
+                self.__NHAGE = NHAGE
     @property
     def NHAGV(self) -> int:
         try:

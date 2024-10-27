@@ -20,11 +20,11 @@ MESH_DIRECTORY = INPUT_DIRECTORY / 'shinnecock'
 
 # open mesh file
 # mesh = AdcircMesh.open(MESH_DIRECTORY / 'fort.14', crs=4326)
-mesh = AdcircMesh.open('./jb20241024_home_mesh.14', crs=4326)
+mesh = AdcircMesh.open('./jb20241026_home_mesh.14', crs=4326)
 resource=r'E:\pythonProject1\adcircpy\examples\out_tpox_sum.nc'
 # initialize tidal forcing and constituents
-tidal_forcing = Tides(TidalSource.TPXO,resource=resource)
-# tidal_forcing = Tides()
+# tidal_forcing = Tides(TidalSource.TPXO,resource=resource)
+tidal_forcing = Tides()
 tidal_forcing.use_all()
 # tidal_forcing.use_constituent('S1')
 # tidal_forcing.use_constituent('S2')
@@ -54,7 +54,7 @@ driver.TOUTGV = 3.8
 driver.smagorinsky = False
 driver.horizontal_mixing_coefficient = 5.0
 driver.gwce_solution_scheme = 'semi-implicit-legacy'
-
+driver.NHAGE=1
 if shutil.which('padcirc') is not None:
     driver.run(OUTPUT_DIRECTORY, overwrite=True)
 elif shutil.which('adcirc') is not None:

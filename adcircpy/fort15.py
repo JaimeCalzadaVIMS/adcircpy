@@ -2374,6 +2374,11 @@ class Fort15:
         except AttributeError:
             return self._get_harmonic_analysis_state(self.elevation_surface_output)
 
+    @NHAGE.setter
+    def NHAGE(self, NHAGE: int):
+        assert NHAGE in [0, 1]
+        self.__NHAGE = NHAGE
+
     @property
     def NHAGV(self) -> int:
         try:
